@@ -1,0 +1,803 @@
+/* ==========================================================================
+   SUNFLOWER TETRIS - SPRING GARDEN THEME STYLESHEET
+   ========================================================================== */
+
+:root {
+  /* 색상 팔레트: 봄 & 해바라기 테마 */
+  --sky-top: #bde4ff;
+  --sky-mid: #e1f4ff;
+  --sky-bottom: #fff7d6;
+
+  --grass-light: #8cd668;
+  --grass-dark: #64b547;
+  --grass-shadow: #4d9433;
+
+  --sunflower-yellow: #ffc83b;
+  --sunflower-orange: #ff9f1c;
+  --sunflower-brown: #6d4323;
+  --sunflower-dark-brown: #4a2810;
+
+  --board-bg: rgba(255, 255, 255, 0.88);
+  --board-grid: rgba(180, 205, 170, 0.28);
+  --board-border: #96d782;
+
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-shadow: 0 10px 30px rgba(85, 130, 70, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --card-border: rgba(255, 255, 255, 0.8);
+
+  --text-dark: #3a4835;
+  --text-muted: #6e7e68;
+  --text-accent: #e67e22;
+
+  --font-title: 'Outfit', 'Jua', sans-serif;
+  --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-numeric: 'Outfit', sans-serif;
+
+  --btn-yellow-top: #ffe066;
+  --btn-yellow-bottom: #ffbe2e;
+  --btn-green-top: #a2e887;
+  --btn-green-bottom: #76ca54;
+}
+
+/* 리셋 & 기본 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-main);
+  color: var(--text-dark);
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 40%, var(--sky-bottom) 85%, #dff2b8 100%);
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+/* ==========================================================================
+   배경 하늘, 햇살, 구름 & 꽃잎 애니메이션
+   ========================================================================== */
+.sky-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* 부드러운 햇살 광륜 */
+.sun-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 160, 0.85) 0%, rgba(255, 220, 100, 0.35) 45%, rgba(255, 255, 255, 0) 75%);
+  filter: blur(20px);
+  animation: sunPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes sunPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.12); opacity: 0.95; }
+}
+
+/* 유영하는 구름 */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 100px;
+  filter: blur(1px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 150px;
+  height: 50px;
+  top: 70px;
+  left: -170px;
+  animation: floatCloud 45s linear infinite;
+  opacity: 0.8;
+}
+.cloud-1::before {
+  width: 60px;
+  height: 60px;
+  top: -28px;
+  left: 28px;
+}
+.cloud-1::after {
+  width: 45px;
+  height: 45px;
+  top: -18px;
+  right: 28px;
+}
+
+.cloud-2 {
+  width: 220px;
+  height: 65px;
+  top: 140px;
+  left: -240px;
+  animation: floatCloud 65s linear infinite 15s;
+  opacity: 0.65;
+}
+.cloud-2::before {
+  width: 90px;
+  height: 90px;
+  top: -42px;
+  left: 45px;
+}
+.cloud-2::after {
+  width: 70px;
+  height: 70px;
+  top: -28px;
+  right: 40px;
+}
+
+.cloud-3 {
+  width: 130px;
+  height: 40px;
+  top: 220px;
+  left: -150px;
+  animation: floatCloud 52s linear infinite 30s;
+  opacity: 0.55;
+}
+.cloud-3::before {
+  width: 50px;
+  height: 50px;
+  top: -22px;
+  left: 25px;
+}
+.cloud-3::after {
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  right: 25px;
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 300px)); }
+}
+
+/* 흩날리는 꽃잎 컨테이너 */
+.floating-petals-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  background: linear-gradient(135deg, #fff3a8, #ffd752);
+  border-radius: 80% 0 80% 0;
+  box-shadow: 0 2px 6px rgba(255, 200, 50, 0.25);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   메인 게임 래퍼
+   ========================================================================== */
+.game-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  padding: 24px 20px 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   헤더 타이틀 디자인
+   ========================================================================== */
+.game-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid #d4eeac;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #558b2f;
+  box-shadow: 0 4px 12px rgba(100, 180, 70, 0.12);
+  margin-bottom: 8px;
+}
+
+.header-badge .flower-icon {
+  font-size: 1rem;
+  animation: gentleRotate 6s ease-in-out infinite;
+}
+
+@keyframes gentleRotate {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg); }
+}
+
+.game-title {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #f57c00 0%, #ffb300 45%, #689f38 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 14px rgba(255, 179, 0, 0.25);
+  margin-bottom: 4px;
+}
+
+.game-subtitle {
+  font-size: 0.95rem;
+  color: #5d6d56;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   게임 레이아웃 (좌측 패널 / 보드 / 우측 패널)
+   ========================================================================== */
+.game-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 22px;
+  width: 100%;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   UI 카드 (크림 화이트 & 둥근 모서리)
+   ========================================================================== */
+.ui-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 16px 18px;
+  border: 2px solid #ffffff;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(85, 130, 70, 0.16), 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px dashed #e3ecd9;
+}
+
+.card-header h2 {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #43543d;
+}
+
+.card-deco {
+  font-size: 1.15rem;
+}
+
+/* 다음 블록 카드 */
+.canvas-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fbfdf9;
+  border-radius: 14px;
+  border: 1.5px solid #e7f0e0;
+  padding: 10px;
+  min-height: 120px;
+}
+
+#nextCanvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* 조작 가이드 카드 */
+.guide-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+}
+
+.guide-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.key-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  background: #f4f8ee;
+  border: 1.5px solid #d7e8cb;
+  border-bottom: 2.5px solid #bcd4af;
+  border-radius: 6px;
+  font-family: var(--font-numeric);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4e6347;
+}
+
+.key-badge.space-key {
+  min-width: 52px;
+}
+
+/* 스탯 카드 */
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #fbfdf9;
+  border: 1.5px solid #e7f0e0;
+  border-radius: 12px;
+}
+
+.stat-box:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-family: var(--font-numeric);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #3b5034;
+  letter-spacing: 0.5px;
+}
+
+.stat-value.highlight-level {
+  color: #f57c00;
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--btn-yellow-top) 0%, var(--btn-yellow-bottom) 100%);
+  color: #5c3800;
+  border: 1.5px solid #ffd466;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--btn-green-top) 0%, var(--btn-green-bottom) 100%);
+  color: #1f4a10;
+  border: 1.5px solid #b7f0a0;
+}
+
+.btn-toggle {
+  background: #f2f7ec;
+  color: #475a40;
+  border: 1.5px solid #d4e7c7;
+  font-size: 0.86rem;
+  padding: 10px 14px;
+}
+
+.btn-toggle.muted {
+  background: #f5f5f5;
+  color: #8c8c8c;
+  border-color: #ddd;
+}
+
+.btn-icon {
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   중앙 게임 보드
+   ========================================================================== */
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-frame {
+  position: relative;
+  background: var(--board-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 10px;
+  border-radius: 24px;
+  border: 3.5px solid var(--board-border);
+  box-shadow: 0 16px 40px rgba(70, 120, 50, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+#tetrisCanvas {
+  display: block;
+  background: linear-gradient(180deg, #fbfdf9 0%, #f4faee 100%);
+  border-radius: 14px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   오버레이 (일시정지 & 게임 오버 모달)
+   ========================================================================== */
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 55, 25, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+  border-radius: 20px;
+}
+
+.game-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.overlay-modal {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 24px 22px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+  border: 3px solid #ffde66;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-icon {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+.overlay-modal h3 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  color: #3f4e39;
+  margin-bottom: 8px;
+}
+
+.overlay-modal h3.danger-title {
+  color: #e65100;
+}
+
+.overlay-modal p {
+  font-size: 0.85rem;
+  color: #6d7b68;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.game-over-stats {
+  background: #fbfdf9;
+  border: 1.5px solid #e7f0e0;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.over-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #55664f;
+}
+
+.over-stat-item strong {
+  font-family: var(--font-numeric);
+  font-size: 1.15rem;
+  color: #273822;
+}
+
+.restart-btn {
+  width: 100%;
+}
+
+/* ==========================================================================
+   하단 정원 및 해바라기 일러스트 데코레이션
+   ========================================================================== */
+.bottom-garden {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.garden-hill {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  border-radius: 50% 50% 0 0;
+}
+
+.back-hill {
+  height: 70px;
+  background: linear-gradient(180deg, #99e072 0%, #6ec248 100%);
+  opacity: 0.85;
+}
+
+.front-hill {
+  height: 50px;
+  background: linear-gradient(180deg, #81d156 0%, #57a834 100%);
+}
+
+/* 해바라기 클러스터 */
+.sunflower-cluster {
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  gap: 18px;
+}
+
+.cluster-left {
+  left: 30px;
+}
+
+.cluster-right {
+  right: 30px;
+}
+
+.sunflower {
+  position: relative;
+  width: 44px;
+  height: 75px;
+}
+
+.sf-2 {
+  transform: scale(0.85) rotate(-6deg);
+  margin-top: 10px;
+}
+
+.sf-3 {
+  transform: scale(0.9) rotate(8deg);
+  margin-top: 8px;
+}
+
+.sf-4 {
+  transform: scale(1.05);
+}
+
+.sunflower .stem {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 4px;
+  height: 50px;
+  background: #549b32;
+  border-radius: 2px;
+}
+
+.sunflower .leaf {
+  position: absolute;
+  width: 16px;
+  height: 9px;
+  background: #68b843;
+  border-radius: 12px 0 12px 0;
+}
+
+.sunflower .leaf-left {
+  bottom: 20px;
+  left: 6px;
+  transform: rotate(-25deg);
+}
+
+.sunflower .leaf-right {
+  bottom: 28px;
+  left: 22px;
+  transform: scaleX(-1) rotate(-25deg);
+}
+
+.sunflower .flower-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  animation: swayFlower 4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes swayFlower {
+  0% { transform: rotate(-3deg); }
+  100% { transform: rotate(4deg); }
+}
+
+.flower-head .petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, transparent 38%, #ffb300 40%, #ffca28 70%),
+    conic-gradient(from 0deg,
+      #ffca28 0deg 15deg, #ffa000 15deg 30deg,
+      #ffca28 30deg 45deg, #ffa000 45deg 60deg,
+      #ffca28 60deg 75deg, #ffa000 75deg 90deg,
+      #ffca28 90deg 105deg, #ffa000 105deg 120deg,
+      #ffca28 120deg 135deg, #ffa000 135deg 150deg,
+      #ffca28 150deg 165deg, #ffa000 165deg 180deg,
+      #ffca28 180deg 195deg, #ffa000 195deg 210deg,
+      #ffca28 210deg 225deg, #ffa000 225deg 240deg,
+      #ffca28 240deg 255deg, #ffa000 255deg 270deg,
+      #ffca28 270deg 285deg, #ffa000 285deg 300deg,
+      #ffca28 300deg 315deg, #ffa000 315deg 330deg,
+      #ffca28 330deg 345deg, #ffa000 345deg 360deg
+    );
+  box-shadow: 0 2px 8px rgba(255, 160, 0, 0.3);
+}
+
+.flower-head .center-disc {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle, #543317 0%, #3e240e 100%);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   반응형 미디어 쿼리 (태블릿 & 모바일 대응)
+   ========================================================================== */
+@media (max-width: 820px) {
+  .game-wrapper {
+    padding: 16px 12px 100px 12px;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .side-panel {
+    width: 320px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-panel .ui-card,
+  .right-panel .ui-card {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sunflower-cluster {
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 1.6rem;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 320px;
+    flex-direction: column;
+  }
+
+  .bottom-garden {
+    height: 60px;
+  }
+
+  .sunflower-cluster {
+    display: none;
+  }
+}

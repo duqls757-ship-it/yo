@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해바라기 테트리스 | Sunflower Tetris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Outfit:wght@400;600;700;800&family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 화창한 봄 배경 데코레이션 요소 -->
+  <div class="sky-background">
+    <div class="sun-glow"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="floating-petals-container" id="petalsContainer"></div>
+  </div>
+
+  <!-- 메인 게임 컨테이너 -->
+  <main class="game-wrapper">
+    <!-- 헤더 타이틀 -->
+    <header class="game-header">
+      <div class="header-badge">
+        <span class="flower-icon">🌻</span>
+        <span>SPRING GARDEN</span>
+        <span class="flower-icon">🌻</span>
+      </div>
+      <h1 class="game-title">SUNFLOWER TETRIS</h1>
+      <p class="game-subtitle">화창한 봄날의 해바라기 정원에서 즐기는 테트리스</p>
+    </header>
+
+    <!-- 게임 레이아웃: 좌측 패널 / 보드 / 우측 패널 -->
+    <div class="game-layout">
+      <!-- 좌측 패널: 다음 블록 & 조작 방법 -->
+      <aside class="side-panel left-panel">
+        <div class="ui-card next-card">
+          <div class="card-header">
+            <span class="card-deco">🌱</span>
+            <h2>다음 블록</h2>
+          </div>
+          <div class="canvas-box">
+            <canvas id="nextCanvas" width="120" height="120"></canvas>
+          </div>
+        </div>
+
+        <div class="ui-card controls-guide-card">
+          <div class="card-header">
+            <span class="card-deco">🌼</span>
+            <h2>조작 방법</h2>
+          </div>
+          <ul class="guide-list">
+            <li><span class="key-badge">←</span> <span class="key-badge">→</span> 좌우 이동</li>
+            <li><span class="key-badge">↑</span> 시계방향 회전</li>
+            <li><span class="key-badge">↓</span> 소프트 드롭</li>
+            <li><span class="key-badge space-key">Space</span> 하드 드롭</li>
+            <li><span class="key-badge">P</span> 일시정지 / 계속하기</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- 중앙 게임 보드 -->
+      <section class="board-container">
+        <div class="board-frame">
+          <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+          
+          <!-- 일시정지 오버레이 -->
+          <div id="pauseOverlay" class="game-overlay hidden">
+            <div class="overlay-modal">
+              <div class="modal-icon">☕</div>
+              <h3>잠시 쉬어가는 중</h3>
+              <p>해바라기가 따뜻한 햇살을 쬐고 있어요.</p>
+              <button id="overlayResumeBtn" class="btn btn-primary">계속하기</button>
+            </div>
+          </div>
+
+          <!-- 게임 오버 오버레이 -->
+          <div id="gameOverOverlay" class="game-overlay hidden">
+            <div class="overlay-modal">
+              <div class="modal-icon">🌻</div>
+              <h3 class="danger-title">게임 오버</h3>
+              <div class="game-over-stats">
+                <div class="over-stat-item">
+                  <span>최종 점수</span>
+                  <strong id="finalScore">0</strong>
+                </div>
+                <div class="over-stat-item">
+                  <span>도달 레벨</span>
+                  <strong id="finalLevel">1</strong>
+                </div>
+                <div class="over-stat-item">
+                  <span>제거한 줄</span>
+                  <strong id="finalLines">0</strong>
+                </div>
+              </div>
+              <button id="overlayRestartBtn" class="btn btn-primary restart-btn">다시 시작하기</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 우측 패널: 점수, 레벨, 라인 & 액션 버튼 -->
+      <aside class="side-panel right-panel">
+        <div class="ui-card stats-card">
+          <div class="card-header">
+            <span class="card-deco">🍯</span>
+            <h2>게임 정보</h2>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-label">현재 점수</span>
+            <span class="stat-value" id="scoreDisplay">0</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-label">현재 레벨</span>
+            <span class="stat-value highlight-level" id="levelDisplay">1</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-label">제거한 줄 수</span>
+            <span class="stat-value" id="linesDisplay">0</span>
+          </div>
+        </div>
+
+        <div class="ui-card action-card">
+          <div class="card-header">
+            <span class="card-deco">🐝</span>
+            <h2>메뉴</h2>
+          </div>
+          <div class="button-group">
+            <button id="pauseBtn" class="btn btn-secondary" aria-label="일시정지 또는 계속하기">
+              <span class="btn-icon" id="pauseIcon">⏸️</span>
+              <span id="pauseBtnText">일시정지</span>
+            </button>
+            <button id="restartBtn" class="btn btn-primary" aria-label="다시 시작">
+              <span class="btn-icon">🔄</span>
+              <span>다시 시작</span>
+            </button>
+            <button id="soundBtn" class="btn btn-toggle" aria-label="효과음 켜기/끄기">
+              <span class="btn-icon" id="soundIcon">🔔</span>
+              <span id="soundBtnText">효과음 켜짐</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 하단 정원 장식 (SVG 일러스트레이션) -->
+    <div class="bottom-garden">
+      <!-- 푸른 잔디 언덕 및 해바라기들 -->
+      <div class="garden-hill back-hill"></div>
+      <div class="garden-hill front-hill"></div>
+      
+      <!-- 해바라기 장식 모음 -->
+      <div class="sunflower-cluster cluster-left">
+        <div class="sunflower sf-1">
+          <div class="stem"></div>
+          <div class="leaf leaf-left"></div>
+          <div class="leaf leaf-right"></div>
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center-disc"></div>
+          </div>
+        </div>
+        <div class="sunflower sf-2">
+          <div class="stem"></div>
+          <div class="leaf leaf-left"></div>
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center-disc"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sunflower-cluster cluster-right">
+        <div class="sunflower sf-3">
+          <div class="stem"></div>
+          <div class="leaf leaf-right"></div>
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center-disc"></div>
+          </div>
+        </div>
+        <div class="sunflower sf-4">
+          <div class="stem"></div>
+          <div class="leaf leaf-left"></div>
+          <div class="leaf leaf-right"></div>
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center-disc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
