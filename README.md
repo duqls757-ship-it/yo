@@ -1,2 +1,0 @@
-# yo
-ai smart work
