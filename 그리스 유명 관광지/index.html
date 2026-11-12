@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>그리스, 고대의 유산과 오늘의 풍경 | 대학교 강의 인터랙티브 사진전시관</title>
+  <meta name="description" content="대학교 강의용 인터랙티브 온라인 사진전시관: 아크로폴리스, 산토리니 섬, 아크로폴리스 박물관을 통해 고대 그리스의 건축, 자연 지형, 유산 보존의 가치를 탐구합니다.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 스킵 내비게이션 (웹 접근성) -->
+  <a href="#gallery-section" class="skip-link">전시 갤러리로 바로가기</a>
+
+  <!-- 헤더 & 내비게이션 -->
+  <header class="site-header" role="banner">
+    <div class="container nav-inner">
+      <a href="#" class="brand-link" aria-label="그리스 온라인 사진전시관 홈으로 이동">
+        <div class="brand-logo-icon" aria-hidden="true">🏛️</div>
+        <div class="brand-text-wrap">
+          <span class="brand-title">그리스 온라인 사진전시관</span>
+          <span class="brand-sub">고대의 유산과 오늘의 풍경</span>
+        </div>
+      </a>
+      <nav class="site-nav" role="navigation" aria-label="주요 메뉴">
+        <ul class="nav-menu">
+          <li><a href="#hero-section" class="nav-link">도입</a></li>
+          <li><a href="#gallery-section" class="nav-link">사진 갤러리</a></li>
+          <li><a href="#compare-section" class="nav-link">비교 학습 & 메모</a></li>
+          <li><a href="#quiz-section" class="nav-link">이해도 퀴즈</a></li>
+          <li><a href="#curation-notes" class="nav-link">자료 검증 보고</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main id="main-content">
+    <!-- 1. 도입 화면 (Hero Section) -->
+    <section id="hero-section" class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-content">
+        <div class="badge-pill">
+          <span aria-hidden="true">🇬🇷</span>
+          <span>대학교 인문·예술 융합 강의 특강 전시</span>
+        </div>
+        <h1 id="hero-title" class="hero-title">그리스, 고대의 유산과 오늘의 풍경</h1>
+        <p class="hero-subtitle">아크로폴리스 · 산토리니 섬 · 아크로폴리스 박물관</p>
+        <p class="hero-desc">
+          바위 언덕 위에 아로새겨진 고대의 시간, 험준한 화산 절벽을 타고 번져간 새하얀 삶의 터전, 그리고 흩어진 유적의 조각을 오늘의 이야기로 이어주는 박물관까지. 세 가지 상징적 공간을 통해 고대 문명의 유산과 오늘날 그리스의 숨결을 깊이 있게 통찰합니다.
+        </p>
+
+        <div class="hero-cta-wrap">
+          <a href="#gallery-section" class="btn btn-primary" id="start-exhibition-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            전시 시작하기
+          </a>
+          <a href="#design-comparison" class="btn btn-secondary">
+            설계 방향 비교 (Tree-of-Thought)
+          </a>
+        </div>
+
+        <!-- 관람 순서 안내 -->
+        <div class="flow-guide-card" role="region" aria-label="추천 관람 순서">
+          <h2 class="flow-guide-title">추천 관람 순서 가이드</h2>
+          <div class="flow-steps-grid">
+            <div class="flow-step-item">
+              <span class="flow-step-num">1</span>
+              <span class="flow-step-name">관찰 (Observe)</span>
+              <span class="flow-step-desc">고해상도 사진 줌·팬과 핵심 지점(핫스팟) 탐색</span>
+            </div>
+            <div class="flow-step-item">
+              <span class="flow-step-num">2</span>
+              <span class="flow-step-name">해설 (Analyze)</span>
+              <span class="flow-step-desc">역사적 사실과 감상·해석의 구분된 이해</span>
+            </div>
+            <div class="flow-step-item">
+              <span class="flow-step-num">3</span>
+              <span class="flow-step-name">비교 (Synthesize)</span>
+              <span class="flow-step-desc">자연·보존·공간의 세 가지 축 비교와 학생 메모</span>
+            </div>
+            <div class="flow-step-item">
+              <span class="flow-step-num">4</span>
+              <span class="flow-step-name">퀴즈 (Assess)</span>
+              <span class="flow-step-desc">전시 자료에 기반한 5문항 형성평가 퀴즈</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 사진 갤러리 섹션 -->
+    <section id="gallery-section" class="section" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">EXHIBITION GALLERY</span>
+          <h2 id="gallery-title" class="section-title">그리스의 세 가지 공간</h2>
+          <p class="section-desc">카드를 선택하여 큰 사진을 열람하고, 확대·축소 및 관찰 핫스팟과 상세 해설을 확인해 보세요.</p>
+        </div>
+
+        <div id="gallery-grid" class="gallery-grid">
+          <!-- JS를 통해 3개의 장소 카드가 동적으로 주입됩니다 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 비교 학습 섹션 -->
+    <section id="compare-section" class="section section-alt" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">COMPARATIVE LEARNING</span>
+          <h2 id="compare-title" class="section-title">주제별 비교 학습 & 관찰 메모</h2>
+          <p class="section-desc">자연 지형, 유산의 보존, 공간의 역할을 기준으로 서로 다른 두 장소를 나란히 비교하며 통찰해 보세요.</p>
+        </div>
+
+        <div class="compare-container">
+          <!-- 비교 테마 탭 -->
+          <div id="compare-theme-tabs" class="compare-theme-tabs" role="tablist" aria-label="비교 학습 주제 선택">
+            <!-- JS 동적 생성 -->
+          </div>
+
+          <!-- 비교 질문 상자 -->
+          <div class="compare-question-box" role="region" aria-live="polite">
+            <div id="compare-q-label" class="compare-q-label">비교 질문</div>
+            <p id="compare-q-text" class="compare-q-text"></p>
+          </div>
+
+          <!-- 나란히 비교 카드 -->
+          <div class="compare-dual-grid">
+            <div class="compare-item-card">
+              <img id="comp-place-a-img" class="compare-item-media" src="" alt="">
+              <div class="compare-item-content">
+                <h3 id="comp-place-a-title" class="compare-item-title"></h3>
+                <p id="comp-place-a-point" class="compare-item-point"></p>
+              </div>
+            </div>
+            <div class="compare-item-card">
+              <img id="comp-place-b-img" class="compare-item-media" src="" alt="">
+              <div class="compare-item-content">
+                <h3 id="comp-place-b-title" class="compare-item-title"></h3>
+                <p id="comp-place-b-point" class="compare-item-point"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 종합 해설 -->
+          <div class="compare-synthesis-card">
+            <h4 class="compare-synthesis-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              강의 해설 종합
+            </h4>
+            <p id="comp-synthesis-text" class="compare-synthesis-text"></p>
+          </div>
+
+          <!-- 학생 관찰 메모장 -->
+          <div class="student-note-section">
+            <div class="note-header">
+              <h3 class="note-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                나의 관찰 및 비교 메모
+              </h3>
+              <div class="note-toolbar">
+                <button id="save-note-btn" class="btn btn-secondary btn-sm" title="현재 메모를 브라우저에 임시 저장">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                  메모 저장
+                </button>
+                <button id="download-note-btn" class="btn btn-secondary btn-sm" title="메모를 텍스트 파일(.txt)로 저장">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  다운로드 (.txt)
+                </button>
+                <button id="clear-note-btn" class="btn btn-secondary btn-sm" title="메모 초기화">
+                  삭제
+                </button>
+              </div>
+            </div>
+            <textarea id="student-note" class="note-textarea" placeholder="강의 중에 관찰한 점, 사진에서 발견한 디테일, 또는 두 장소의 차이점에 대한 생각을 자유롭게 기록해 보세요. (자동 저장 지원)"></textarea>
+            <div id="note-feedback" class="note-feedback" role="status" aria-live="polite">
+              메모는 현재 브라우저에만 보관되며 서버나 개인정보를 수집하지 않습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 퀴즈 섹션 -->
+    <section id="quiz-section" class="section" aria-labelledby="quiz-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">KNOWLEDGE CHECK</span>
+          <h2 id="quiz-title" class="section-title">관람 확인 퀴즈</h2>
+          <p class="section-desc">제공된 설명 자료에 근거한 5개의 문항을 풀며 학습 내용을 확인해 보세요.</p>
+        </div>
+
+        <div class="quiz-wrapper">
+          <!-- 퀴즈 진행 뷰 -->
+          <div id="quiz-active-view">
+            <!-- 프로그레스 바 -->
+            <div class="quiz-progress-bar-wrap">
+              <div id="quiz-progress-bar" class="quiz-progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="quiz-meta-bar">
+              <span id="quiz-category-tag" class="quiz-category-tag">아크로폴리스</span>
+              <span id="quiz-counter" class="quiz-counter">1 / 5</span>
+            </div>
+
+            <h3 id="quiz-question-text" class="quiz-question-text">문항 로딩 중...</h3>
+
+            <!-- 4지선다형 옵션 리스트 -->
+            <div id="quiz-options-list" class="quiz-options-list" role="radiogroup" aria-labelledby="quiz-question-text">
+              <!-- JS 동적 생성 -->
+            </div>
+
+            <!-- 피드백 박스 -->
+            <div id="quiz-feedback-box" class="quiz-feedback-box" role="region" aria-live="polite">
+              <div id="feedback-status-badge" class="feedback-status-badge"></div>
+              <p id="feedback-explanation" class="feedback-explanation"></p>
+            </div>
+
+            <!-- 하단 조작 버튼 -->
+            <div class="quiz-bottom-actions">
+              <button id="quiz-confirm-btn" class="btn btn-primary" disabled>
+                정답 확인
+              </button>
+              <button id="quiz-next-btn" class="btn btn-primary" style="display:none;">
+                다음 문항
+              </button>
+            </div>
+          </div>
+
+          <!-- 최종 결과 화면 -->
+          <div id="quiz-result-view" class="quiz-result-view" role="region" aria-live="polite">
+            <div class="result-badge-circle">
+              <span id="result-score-num" class="result-score-num">0</span>
+              <span class="result-score-denom">/ 5점</span>
+            </div>
+            <h3 class="result-title">퀴즈 완료!</h3>
+            <p class="result-summary-text">그리스의 세 장소와 비교 학습 내용을 훌륭하게 관람하셨습니다. 문항별 해설을 확인해 보세요.</p>
+
+            <div id="result-review-list" class="result-review-list">
+              <!-- 문항별 결과 및 해설 렌더링 -->
+            </div>
+
+            <div class="result-cta-group">
+              <button id="quiz-restart-btn" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                다시 풀기
+              </button>
+              <button id="quiz-back-exhibition-btn" class="btn btn-primary">
+                전시로 돌아가기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 설계 방향 비교 & 자료 검증 분석 (요구사항 1 & 2 충족) -->
+    <section id="design-comparison" class="section section-alt" aria-labelledby="design-comp-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">DESIGN DECISION & VERIFICATION</span>
+          <h2 id="design-comp-title" class="section-title">설계 방향 비교 및 자료 검증 보고</h2>
+          <p class="section-desc">Tree-of-Thought 대안 탐색과 제공된 사진·텍스트의 대조 분석 결과입니다.</p>
+        </div>
+
+        <!-- 1) 설계 방향 비교표 -->
+        <h3 style="font-size:1.2rem;font-weight:800;color:var(--color-primary-dark);margin-bottom:16px;">
+          1. 전시관 구성 대안 비교 (Tree-of-Thought)
+        </h3>
+        <div class="analysis-table-wrap">
+          <table class="analysis-table">
+            <thead>
+              <tr>
+                <th scope="col">구성 유형</th>
+                <th scope="col">강의 적합성</th>
+                <th scope="col">조작 편의성</th>
+                <th scope="col">구현 안정성</th>
+                <th scope="col">주요 장단점 및 특징</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>사진 감상 중심 (갤러리형)</strong></td>
+                <td>보통 (감상 위주)</td>
+                <td>매우 우수 (단순 스크롤)</td>
+                <td>매우 우수 (가벼움)</td>
+                <td>사진 본연의 미적 감상에 몰입할 수 있으나, 대학교 강의의 교육적 목표(비교·평가)를 충족하기엔 텍스트 전달력이 부족함.</td>
+              </tr>
+              <tr>
+                <td><strong>장소·포인트 선택 (탐색형)</strong></td>
+                <td>우수 (능동적 관찰)</td>
+                <td>우수 (인터랙티브 핀)</td>
+                <td>우수 (캔버스/뷰어)</td>
+                <td>확대·축소와 관찰 핫스팟을 통해 세부를 능동적으로 탐색할 수 있어 유물·건축 관찰력 향상에 탁월함.</td>
+              </tr>
+              <tr>
+                <td><strong>해설·퀴즈 연결 (학습형)</strong></td>
+                <td>매우 우수 (이해도 측정)</td>
+                <td>보통 (퀴즈 단계 필요)</td>
+                <td>우수 (상태 관리)</td>
+                <td>강의 내용의 정확한 습득 여부와 상호 비교 이해도를 형성평가로 검증하는 데 최적화됨.</td>
+              </tr>
+              <tr class="selected-row">
+                <td><strong>최종 채택: 하이브리드 통합형<br>(갤러리 기본 + 탐색 + 퀴즈)</strong></td>
+                <td><strong>최상 (강의 완결성)</strong></td>
+                <td><strong>우수 (단계적 동선)</strong></td>
+                <td><strong>우수 (무빌드 순수 JS)</strong></td>
+                <td><strong>[최종 선택 이유]</strong> 대학교 강의 목적상 시각적 감상(갤러리)을 토대로 출발하여, 핫스팟 세부 관찰(탐색)을 거치고, 나란히 비교와 5문항 퀴즈(학습)로 자연스럽게 귀결되는 '관찰→해설→비교→퀴즈' 통합 모델이 교육적 효과와 몰입도를 극대화함.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2) 자료 확인 및 불일치 검증 보고 -->
+        <div id="curation-notes" class="detail-section-card" style="margin-top:30px;background:#fff;">
+          <h3 style="font-size:1.15rem;font-weight:800;color:var(--color-primary-dark);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--color-warning);"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            2. 제공 자료 검증 및 정확성 보고 (불일치 항목 안내)
+          </h3>
+          <ul class="detail-list">
+            <li><strong>아크로폴리스:</strong> 제공된 파일 <code>아크로폴리스.jpg</code>와 설명 <code>1. 아크로폴리스 — 도시 위에 남은 고대의 시간.txt</code>가 정확히 일치함을 확인하였습니다. (바위 언덕 위 파르테논 신전과 하단 수목·암벽)</li>
+            <li><strong>산토리니 섬:</strong> 제공된 파일 <code>산토리니섬.jpg</code>와 설명 <code>2. 산토리니 섬 — 흰 건물 사이로 이어지는 삶.txt</code>가 정확히 일치함을 확인하였습니다. (푸른 바다와 흰 회벽, 파란 둥근 돔 지붕 및 계단식 테라스)</li>
+            <li>
+              <strong style="color:var(--color-warning);">아크로폴리스 박물관 (사진 확인 필요):</strong>
+              제공된 파일 <code>아크로폴리스 박물관.jpg</code>의 시각적 대상은 현대 건축물인 '아크로폴리스 박물관 실내 조각 전시실'이 아니라, 아크로폴리스 언덕 남서쪽 경사면에 위치한 고대 로마 시대 반원형 야외 극장인 <strong>'헤로데스 아티쿠스 음악당(Odeon of Herodes Atticus)'</strong>입니다.
+              이에 따라 <strong>'사진 확인 필요'</strong> 경고 배지를 부착하고, 임의로 명칭이나 사실을 조작하지 않았으며, 상세 모달 내에서 강의자가 실제 박물관 조각 사진으로 교체할 수 있는 [사진 교체하기] 기능을 탑재하였습니다.
+            </li>
+            <li><strong>누락 파일 점검:</strong> 요청된 3장의 이미지와 3개의 설명 텍스트 파일이 모두 정상 수신되었으며 누락된 파일은 없습니다.</li>
+            <li><strong>출처 확인 및 링크:</strong> 없는 역사적 사실을 자의적으로 추가하지 않고 자료 본문에 충실하였으며, 세계유산 공식 포털(UNESCO) 및 아크로폴리스 박물관 공식 웹사이트 링크를 명기하였습니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 상세 관람 모달 (High-Res 줌/팬 뷰어 & 해설) -->
+  <div id="detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="detail-modal-dialog">
+      <!-- 모달 상단 헤더 -->
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <div>
+            <h2 id="modal-title" class="modal-header-title">장소명</h2>
+            <span id="modal-subtitle" style="font-size:0.85rem;color:var(--color-stone-dark);font-weight:600;">부제</span>
+          </div>
+          <span id="modal-flag-badge" class="card-flag-badge" style="display:none;position:static;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            사진 확인 필요
+          </span>
+        </div>
+        <div class="modal-nav-btns">
+          <button id="modal-close-btn" class="icon-btn" aria-label="상세 관람 닫기 (ESC)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 모달 바디: 좌측 뷰어 / 우측 상세 패널 -->
+      <div class="modal-body">
+        <!-- 좌측: 인터랙티브 이미지 뷰어 -->
+        <div id="viewer-container" class="viewer-container">
+          <!-- 뷰어 툴바 -->
+          <div class="viewer-toolbar" role="toolbar" aria-label="이미지 뷰어 도구">
+            <button id="zoom-in-btn" class="toolbar-btn" aria-label="사진 확대 (+)" title="확대 (+)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </button>
+            <span id="zoom-indicator" class="zoom-indicator">100%</span>
+            <button id="zoom-out-btn" class="toolbar-btn" aria-label="사진 축소 (-)" title="축소 (-)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </button>
+            <button id="zoom-reset-btn" class="toolbar-btn" aria-label="배율 원래대로 복원" title="크기 복원">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            </button>
+            <button id="fullscreen-btn" class="toolbar-btn" aria-label="전체 화면 보기" title="전체 화면">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+            </button>
+            <button id="replace-img-btn" class="toolbar-btn" aria-label="사진 교체하기" title="사진 교체하기 (올바른 박물관 사진 등록)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </button>
+            <!-- 숨겨진 파일 인풋 -->
+            <input type="file" id="img-file-input" accept="image/*" style="display:none;" aria-hidden="true">
+          </div>
+
+          <!-- 사진 확인 필요 알림창 -->
+          <div id="viewer-flag-alert" class="viewer-flag-alert hidden" role="alert">
+            <span id="flag-alert-text"></span>
+          </div>
+
+          <!-- 뷰어 캔버스 (마우스 드래그 & 휠) -->
+          <div id="viewer-viewport" class="viewer-viewport" title="마우스 휠로 확대/축소, 확대 후 드래그하여 이동할 수 있습니다.">
+            <div id="viewer-wrapper" class="viewer-content-wrapper">
+              <img id="viewer-image" class="viewer-image" src="" alt="">
+              <!-- 핫스팟 레이어 -->
+              <div id="hotspots-layer" class="hotspots-layer"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 상세 해설 패널 -->
+        <div class="detail-panel">
+          <!-- 1) 관찰 포인트 -->
+          <div>
+            <h3 class="detail-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 16 12 12 8"></polygon></svg>
+              주요 관찰 포인트 (사진 속 핫스팟 클릭 연동)
+            </h3>
+            <div id="obs-points-list" class="obs-points-container">
+              <!-- 관찰 포인트 카드 동적 생성 -->
+            </div>
+          </div>
+
+          <!-- 2) 역사적 사실 -->
+          <div class="detail-section-card">
+            <h3 class="detail-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              역사적 사실 및 공간의 특성
+            </h3>
+            <ul id="detail-facts-list" class="detail-list"></ul>
+          </div>
+
+          <!-- 3) 감상 및 해석 -->
+          <div class="detail-section-card">
+            <h3 class="detail-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              감상 및 조형적 해석
+            </h3>
+            <ul id="detail-art-list" class="detail-list"></ul>
+          </div>
+
+          <!-- 공식 출처 링크 -->
+          <div style="font-size:0.85rem;color:var(--color-text-subtle);">
+            <strong>공식 검증 출처:</strong>
+            <a id="official-source-link" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);text-decoration:underline;"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모달 하단 내비게이션 -->
+      <div class="modal-footer">
+        <button id="modal-prev-btn" class="btn btn-secondary btn-sm" aria-label="이전 장소로 이동 (왼쪽 방향키)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          이전 장소
+        </button>
+        <button onclick="document.getElementById('modal-close-btn').click();" class="btn btn-secondary btn-sm">
+          목록으로 돌아가기
+        </button>
+        <button id="modal-next-btn" class="btn btn-secondary btn-sm" aria-label="다음 장소로 이동 (오른쪽 방향키)">
+          다음 장소
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>그리스, 고대의 유산과 오늘의 풍경</h4>
+          <p>본 온라인 전시는 대학교 강의에서 학생들의 능동적 시각 탐색과 비판적 비교 분석을 돕기 위해 기획·제작된 인터랙티브 교육용 전시관입니다. 제공된 공식 설명 자료에 철저히 근거하여 구축되었습니다.</p>
+        </div>
+        <div class="footer-col">
+          <h4>전시 코너 바로가기</h4>
+          <ul>
+            <li><a href="#gallery-section">사진 갤러리 & 관찰 핫스팟</a></li>
+            <li><a href="#compare-section">비교 학습 & 관찰 메모장</a></li>
+            <li><a href="#quiz-section">관람 확인 형성평가 퀴즈</a></li>
+            <li><a href="#design-comparison">설계 비교 & 자료 검증</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>공식 레퍼런스</h4>
+          <ul>
+            <li><a href="https://whc.unesco.org/en/list/404" target="_blank" rel="noopener">유네스코 세계유산: 아크로폴리스</a></li>
+            <li><a href="https://www.visitgreece.gr" target="_blank" rel="noopener">그리스 정부 관광청 (GNTO)</a></li>
+            <li><a href="https://www.theacropolismuseum.gr/en" target="_blank" rel="noopener">아크로폴리스 박물관 공식 포털</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 그리스 인터랙티브 사진전시관 프로젝트. 대학교 강의용 교육 목적으로 제작되었습니다. 개인정보를 수집하지 않습니다.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 스크립트 연결 -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
